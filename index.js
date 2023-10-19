@@ -9,7 +9,7 @@ app.use(cors())
 app.use(express.json())
 
 const API_KEY=process.env.API_KEY;
-
+const PORT = process.env.PORT || 3000
 const web3 = new Web3(`https://eth-sepolia.g.alchemy.com/v2/${API_KEY}`)
 const contractAddress = "0xBb4629df0A6735be6e75786915794B93008CD289";
 const contract = new web3.eth.Contract(ABI,contractAddress);
@@ -60,6 +60,6 @@ app.post("/api/candidate-verification",async(req,res)=>{
     }
 })
 
-app.listen(3000,()=>{
+app.listen(PORT,()=>{
     console.log("Server is running")
 })
